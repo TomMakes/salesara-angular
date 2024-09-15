@@ -1,9 +1,13 @@
 <mat-form-field>
     <mat-label>Basic Input</mat-label>
-    <input matInput>
+    <input type="text"
+    matInput
+    [formControl]="inputFormControl"
+    [matAutocomplete]="auto"
+    qa-tag=type-ahead-input>
     <mat-autocomplete #auto="matAutocomplete">
-        @for (option of autoCompleteOptions; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
+        @for (option of optionsToDisplay; track option) {
+          <mat-option attr.qa-tag=type-ahead-option-{{option.name}} [value]="option.value">{{option.name}}</mat-option>
         }
     </mat-autocomplete>
 </mat-form-field>
